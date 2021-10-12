@@ -1,7 +1,7 @@
 import { BrowserRouter, Redirect, Route, Switch } from "react-router-dom";
-import Todo from "./pages/Todo/Todo";
 import Login from "./pages/Login/Login";
 import Landing from "./pages/Landing/Landing";
+import Home from "./pages/Home/Home";
 import { useGetUser } from "./hooks";
 
 function App() {
@@ -12,10 +12,10 @@ function App() {
     <BrowserRouter>
       <Switch>
         <Route path="/todos">
-          {user ? <Todo user={user} dispatch={dispatch} /> : <Redirect to="/login" />}
+          {user ? <Home /> : <Redirect to="/login" />}
         </Route>
         <Route path="/login">
-          {user ? <Redirect to="/todos" /> : <Login dispatch={dispatch}/>}
+          {user ? <Redirect to="/home" /> : <Login dispatch={dispatch}/>}
         </Route>
         <Route exact path="/">
           <Landing />
